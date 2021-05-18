@@ -36,7 +36,11 @@ class Target(pygame.sprite.Sprite):#defines the class
         self.rect = self.image.get_rect()#its own hitbox
     def update(self):
         self.rect.center = (random.randrange(0,1500), random.randrange(0,700))
-              
+
+#score
+
+score = 0 
+
 #creates window
 pygame.init() #intialises the window
 pygame.mixer.init()
@@ -67,8 +71,9 @@ while running:
             running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:#detects when the user clicks a mouse button
             if pygame.sprite.collide_circle(player, aim):
+                score += 1
                 aim.update()#updates the sprites postition
-                print("hit")
+                print("your score is",score)
         #update
         all_sprites.update()
         #render
